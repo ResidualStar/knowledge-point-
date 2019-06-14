@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.onload // 等待网页加载完成包括js css 图片  不仅仅是window属性  也可以设置给标签 img.onload 加载完后执行函数
+
+        window.uponload // 卸载/离开网页时触发函数 内禁用对话框  刷新时先离开页面再重新加载页面  一般用于清除数据
+
+        // ---------------------------计时器-------------------------------------------------
+
+        setTimeout() // 隔一段事件执行 只会执行依次 
+
+        clearTimeout() // 取消定时 参数传入时间事件接受的全局变量
+            /*两个参数  第一个为要执行的函数  第二个为时间 毫秒*/
+        setInterval() // 每隔一段时间重复执行
+
+        clearInterval() // 取消定时 参数传入时间事件接受的全局变量
+
+        //   ------------------------------location对象-------------------------------------------
+
+        /***/
+        location.href // 获取或修改链接地址  location.href = 'http://www.baidu.com'  让页面跳转到指定位置 可后退
+
+        location.assign('http://www.baidu.com') // 同上 可后退
+
+        location.replace('http://www.baidu.com') // 不可后退  替换地址栏地址 不记录历史
+
+        location.reload() // 参数 true 强制从服务器获取页面--ctrl+f5  false 若浏览器有缓存则从缓存中提取页面--f5
+
+        // ---------------------------------history对象--------------------------------------------------
+
+        history.back //  记录缓存 点击后退一页
+
+        history.forward //  记录缓存 点击前进一页
+
+        history.go(n) //  记录缓存 点击前进n页
+
+        history.go(-n) //  记录缓存 点击后退n页
+
+        // ----------------------------------------------------------------------------------------------
+
+        // 可以获取网页整体链接 不会自己去查
+
+        // --------------------------------------------------------------------------------------------------
+
+        navigator.userAgent // 获取当前的设备类型 pc/移动
+
+
+        box.offsetLeft // 获取盒子距离box最近并且已定位的父元素若无则为body的横向偏移量  到边框
+
+        box.offsetTOP // 获取盒子距离box最近并且已定位的父元素若无则为body纵向偏移量  到边框
+
+        box.offsetWidth // 获取盒子的宽度 包括边框和内边距
+
+        box.offsetHeight // 获取盒子的高度 包括边框和内边距
+
+        box1.offsetParent //  获取离box1最近并且以定位的父元素 若无则为body
+
+        // -----------------------------------------------------------------------------------------------
+
+        box.clientLeft // 相当于border-left 获取盒子边框的宽度  加左滚动条
+
+        box.clientTop // 相当于border-TOP 获取盒子边框的高度  加上滚动条
+
+        box.clientWidth // 获取盒子的宽度 包括内边距  元素的宽+内边距 不加滚动条
+
+        box.clientHeight // 获取盒子的高度 包括内边距  元素的高+内边距 不加滚动条
+
+        // -------------------------------------------------------------------------------------------------
+
+        box.scrollLeft // 内容滚动出去的宽
+
+        box.scrollTop // 内容滚动出去的高
+
+        box.scrollWidth //  内容宽+内边距 不加滚动条
+
+        box.scrollHeight //  内容高+内边距 不加滚动条
+    </script>
+</body>
+
+</html>
