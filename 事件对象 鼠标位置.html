@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        // 事件委托：原理 事件冒泡  父元素设置事件 子元素也会接受事件
+        ul.onclick = function(e) {
+            //实时上点击li时并没有点击到ul所以不会触发点击事件 但是点击li时会进行事件冒泡 获取li的对象 再获取ul对象
+            e.target // 可以通过添加参数用 e.target 获取当前点击的子元素  真正触发事件的对象
+
+            e //事件参数(事件对象)：当事件发生的时候获取和事件相关的数据
+        }
+
+        //当设置事件时 从内到外 依次获取对象
+
+
+
+
+        // ---------------------有兼容性问题的一般都是IE------------不管--------------------------
+        // --------------------------事件对象-----------------------------------------------------------
+
+        给事件处理函数一个参数 该参数就是事件对象 通过事件对象可以获得事件发生时的数据
+
+        e = e || window.event // 解决事件对象的兼容问题
+
+        e.targe || e.srcElement //获取正真触发事件的对象    e.target = e.target || e.srcElement
+
+        e.eventphase // 事件阶段
+
+        e.currentTarget //获取事件处理函数所属的对象   和 this 一样   
+
+        e.type // 获取事件名称  当多个事件指向同一个函数的时候判断用
+
+        e.clientX // 获取鼠标在浏览器的可视区域左上角基点的X坐标  无兼容问题
+
+        e.clientY // 获取鼠标在浏览器的可视区域左上角基点的Y坐标  无兼容问题
+
+        e.pageX // 获取鼠标在以页面左上角为基点的X坐标  有兼容问题
+
+        e.pageY // 获取鼠标在以页面左上角为基点的Y坐标  有兼容问题 
+
+        this.offsetLeft // 获取该元素在页面的横向偏移量  只读
+
+        this.offsetTop // 获取该元素在页面的纵向偏移量   只读
+
+        e.preventDefault() // 取消默认行为 
+
+        e.returnValue = false // 取消默认行为  IE
+
+        e.dataTransfer.setDay(1, 2) // 数据存储  1数据类型：值为 text/html text/uri-list 2存字符串值
+
+        e.dataTransfer.getDay() // 数据获取 
+
+        e.stopPropagation() // 取消冒泡行为  停止事件传播 
+
+        e.cancelBubble = true // 取消冒泡行为  停止事件传播  IE
+
+        e.keyCode // 获取键盘码  配合键盘事件使用  数字键盘码[48,57]
+
+        // --------------------------------------------------------------------------------------------
+
+        document.body.scrollLeft /*获取滑动了的横向距离*/ document.documentElement.scrollLeft
+            //常用                      /*有兼容问题*/
+        document.body.scrollTop /*获取滑动了的纵向距离*/ document.documentElement.scrollTop
+
+        scrollTo(x, y) 一次滚动x / y距离
+        scrollBy(x, y) 相当于自己的位置移动x / y距离
+            // 解决获取滑动了的距离兼容性
+        function getScroll() {
+            var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+            return {
+                scrollLeft: scrollLeft,
+                scrollTop: scrollTop
+            }
+        }
+
+        // --------------------------------------------------------------------------------------------------
+        // pageY = clientY + 滑动了的纵向距离 
+
+        // pageX = clientX + 滑动了的横向距离
+
+        // 解决鼠标坐标的兼容性
+        function getPage(e) {
+            var pageX = e.pageX || e.clientX + getScroll().scrollLeft
+            var pageY = e.pageY || e.clientY + getScroll().scrollTop
+            return {
+                pageX: pageX,
+                pageY: pageY
+            }
+        }
+
+        调用时别忘了传递事件对象 e
+
+        // -------------------------------------------------------------------------------------------------------
+        // 鼠标在盒子上的坐标 = 鼠标在页面的坐标 - 盒子左上角在页面的坐标
+        // 获取鼠标在盒子上的坐标
+        box.oncick = function(e) {
+            e = e || window.event
+            var x = getPage(e).pageX - this.offsetLeft
+            var y = getPage(e).pagey - this.offsetTop
+        }
+    </script>
+</body>
+
+</html>
