@@ -8,6 +8,10 @@
 // git reset 返回上一个版本文件
 // git add ./ 将所有修改的代码文件直接放置暂停区中
 // git commit --all -m "" 将所有修改的代码文件直接放置版本区中
+// git reset HEAD hello.php 取消git add的缓存文件
+// git rm <file> 删除工作区文件若该文件处于暂存区则需要先清除暂存区文件git rm --cached <file>再执行命令 或者 git rm -f <file> 强制删除 
+// git rm –r * 删除文件夹 
+// git mv <oldfilename>  <newfilename> 用于更改暂存区内文件名 
 
 // .gitignore 设置git忽略配置的文件 在配置文件中写入 要忽略的文件路径 
 
