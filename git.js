@@ -3,7 +3,12 @@
 // 初始化 git init
 // 放入文件至git入口(暂存区) git add '要放入的文件路径'
 // 将文件放置git内(版本库) git commit -m "文件说明"
-//  git status 查看当前状态 当前工作区于版本区文件内容一致时表示。。。
+// git status 查看当前状态 当前工作区于版本区文件内容一致时表示。。。
+// git diff 来查看执行 git status 的结果的详细信息
+// 尚未缓存的改动：git diff
+// 查看已缓存的改动： git diff --cached
+// 查看已缓存的与未缓存的所有改动：git diff HEAD
+// 显示摘要而非整个 diff：git diff --stat
 
 // git reset 返回上一个版本文件
 // git add ./ 将所有修改的代码文件直接放置暂停区中
@@ -26,6 +31,7 @@
 // git branch -d dev    删除分支 
 // git checkout dev 切换分支  主分支名为 master 
 // git merge dev(分支名字)  在主支中合并分支  合并时若有冲突 需要手动处理
+// git checkout -b (branchname) 命令来创建新分支并立即切换到该分支下，从而在该分支中操作 
 
 
 // git push 服务器仓库的地址 master    上传文件
